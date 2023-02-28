@@ -10,3 +10,18 @@
 <!-- Personal/custom script to use KaTeX -->
 <script defer language="javascript" type="text/javascript" src="{{ "js/katex.js" | absURL }}"></script>
 <script defer language="javascript" type="text/javascript" src="{{ "js/toc.js" | absURL }}"></script>
+
+<!-- 使用cdn加载文件 -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+// 自定义mermaid配置
+const config = {
+    startOnLoad:true,
+};
+mermaid.initialize(config);
+// 需要注意的是，要将初始化代码放到 window.onload 回调函数里面才有用
+// 否则会因为在html元素加载前进行初始化，找不到元素而失效
+window.onload = () => {
+    window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));
+}
+</script>
